@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OOP Push.Arr</title>
+</head>
+<div id="output"></div>
+<button onclick="display()">SHOW</button>
+<body>
+
+<script>
+    function Pharmacist(id, name, age, address) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.getId = function () {
+            return id;
+        };
+        this.getName = function () {
+            return name;
+        };
+        this.getAge = function () {
+            return age;
+        };
+        this.getAddress = function () {
+            return address;
+        };
+        this.setId = function () {
+            this.id = id;
+        }
+        this.setName = function () {
+            this.name = name;
+        };
+        this.setAge = function () {
+            this.age = age;
+        };
+        this.setAddress = function () {
+            this.address = address;
+        };
+        this.displayPharmacist = function () {
+            let text = ("Số thứ tự: " + this.id + " Name: " + this.name + " Age: " + this.age + " Address: " + this.address);
+            document.getElementById("output").innerHTML += text +"<br>";
+        }
+    }
+
+    function PharmacistManage(arr) {
+        this.arr = new Array();
+        this.Addpharmacist = function (pharmacist) {
+            return this.arr.push(pharmacist);
+        };
+        this.DisplayPharmacist = function (arr) {
+            for (let i = 0; i < this.arr.length; i++) {
+                this.arr[i].displayPharmacist();
+            }
+        };
+    }
+
+    let pharmacist1 = new Pharmacist(1, "Chính", 18, 'Hải Dương');
+    let pharmacist2 = new Pharmacist(2, "Thanh", 17, "Hà Nội");
+    let pharmacistManage = new PharmacistManage();
+    pharmacistManage.Addpharmacist(pharmacist1);
+    pharmacistManage.Addpharmacist(pharmacist2);
+    function display() {
+        pharmacistManage.DisplayPharmacist();
+    }
+
+</script>
+</body>
